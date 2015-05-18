@@ -7,7 +7,7 @@
     <meta name="WebPartPageExpansion" content="full" />
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <!--このページのSharePoint Onlineの配置先のサイトコレクションのURL/_layputs/15/defaultcss.ashxを参照してください。 Ref deploy sitecollection css -->
-    <link rel="stylesheet" href="https://movaritest04.sharepoint.com/sites/portal/_layouts/15/defaultcss.ashx" />
+    <link rel="stylesheet" href="https://sample.sharepoint.com/sites/portal/_layouts/15/defaultcss.ashx" />
 </head>
 <body>
     <div id="result"></div>
@@ -16,9 +16,9 @@
             //Azure Active Directoryに登録したClientIDを指定してください
             var CLIENTID = "600cb9cc-d5ad-4a98-b755-0e0e5df48a8a";
             //SharePoint Onlineにこのページを保存したときのURLを指定してください
-            var REDIRECTURL = "https://movaritest04.sharepoint.com/sites/portal/SitePages/call.aspx";
+            var REDIRECTURL = "https://sample.sharepoint.com/sites/portal/SitePages/call.aspx";
             //SharePoint OnlineのサイトコレクションのURLを指定してください
-            var CURRENTSITEURL = "https://movaritest04.sharepoint.com/sites/portal";
+            var CURRENTSITEURL = "https://sample.sharepoint.com/sites/portal";
             //Office365APIのURLのため、以下2項目は書き換える必要はありません(Preview版のOffice 365 unified APIを使っているので注意してください)
             var RESOURCEURL = "https://graph.microsoft.com";
             var AUTHENDPOINTURL = "https://login.microsoftonline.com/common/oauth2/authorize";
@@ -64,6 +64,7 @@
             function initMyCalendar(token) {
                 var now = new Date();
                 //日本時間の「今日」の予定を取得
+                //This code is written for getting JPN "Today"" schedule 
                 var startDt = [now.getFullYear(), (now.getMonth() + 1), (now.getDate() - 1)].join("-") + "T15:00:00Z";
                 var endDt = [now.getFullYear(), (now.getMonth() + 1), (now.getDate())].join("-") + "T15:00:00Z";
                 var xhr = new XMLHttpRequest();
