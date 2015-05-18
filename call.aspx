@@ -61,7 +61,7 @@
             }
 
             //Access Tokenに基づいてExchange Onlineの情報を取得
-            function initMyCalendar(token) {
+            function initMyCalendar(accesstoken) {
                 var now = new Date();
                 //日本時間の「今日」の予定を取得
                 //This code is written for getting JPN "Today"" schedule 
@@ -69,8 +69,7 @@
                 var endDt = [now.getFullYear(), (now.getMonth() + 1), (now.getDate())].join("-") + "T15:00:00Z";
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "https://graph.microsoft.com/beta/me/calendarview?startDateTime=" + startDt + "&endDateTime=" + endDt + "&$select=Subject,Start,End,WebLink");
-                console.log(token);
-                xhr.setRequestHeader("Authorization", "Bearer " + token);
+                xhr.setRequestHeader("Authorization", "Bearer " + accesstoken);
                 xhr.onload = function () {
                     if (xhr.status == 200) {
                         var jsonFormattedResponse = JSON.parse(xhr.response);
@@ -116,6 +115,7 @@
                 //Thanks for http://www.simplycalc.com/base64-source.php
                 "decodeRFC4648": function (data) {
                     var b64pad = '=';
+                    var b64u = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"   // base64url dictionary
                     var dst = "";
                     var i, a, b, c, d, z;
 
