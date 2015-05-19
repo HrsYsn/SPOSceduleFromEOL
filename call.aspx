@@ -25,6 +25,8 @@
 
             //Office API利用に必要なAccess Tokenを取得後、検証処理を開始
             function initAccessToken() {
+                //hashにAccess Tokenの情報がなければAccess Token付きのURLにリダイレクトされるようにトークン要求URLに移動する。あればAccess Tokenをつかう後続処理を開始する
+                //TODO:sessionStorageをつかってAccess Tokenを保持する仕組みを追加した方がパフォーマンスがよくなる
                 if (location.hash) {
                     var hasharr = location.hash.substr(1).split("&");
                     hasharr.forEach(function (hashelem) {
